@@ -41,3 +41,15 @@
     hand
 
   end
+
+  def uses_available_letters?(input, letter_in_hand)
+    input.split("").each do |letter|
+      if !letter_in_hand.include? letter
+        return false
+      elsif letter_in_hand.include? letter
+        index = letter_in_hand.find_index(letter)
+        letter_in_hand.delete_at(index)
+      end
+    end
+      return true
+  end
