@@ -90,11 +90,7 @@
       word_score += letter_values[letter.upcase.to_sym]
     end
 
-    if word.length == 8 || word.length == 7 || word.length == 9 || word.length == 10
-      word_score += 8
-    end
+    word_score += 8 if word.length >= 8 || word.length <= 10
 
     word_score
   end
-
-  puts score_word("")
