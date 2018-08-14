@@ -90,9 +90,26 @@
       word_score += letter_values[letter.upcase.to_sym]
     end
 
-    if word.length >= 8 && word.length <= 10
+    if word.length >= 7 && word.length <= 10
       word_score += 8
     end
 
     word_score
+  end
+
+  def highest_score_from(words)
+    best_word = {word: nil,score: 0}
+    words.each do |word|
+      if score_word(word) > best_word[:score]
+        best_word[:score] = score_word(word)
+        best_word[:word] = word
+      elsif score_word(word) == best_word[:score]
+        if word.length < best_word[:word].length
+          best_word[:score] = score_word(word)
+          best_word[:word] = word
+
+        end
+      end
+    end
+    best_word
   end
