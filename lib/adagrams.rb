@@ -1,3 +1,4 @@
+  require 'csv'
   def draw_letters
     alphabet = {
       A: 9,
@@ -98,3 +99,13 @@
     end
     best_word
   end
+
+
+  def is_in_english_dict?(input)
+    csv_file = '../assets/dictionary-english.csv'
+    CSV.read( csv_file, "r").each do |line|
+      return true if line.include? input
+    end
+    return false
+  end
+ puts is_in_english_dict? "edblgkxm"
