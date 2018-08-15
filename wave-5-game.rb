@@ -1,3 +1,4 @@
+require 'csv'
 require_relative 'lib/adagrams'
 
 def display_welcome_message

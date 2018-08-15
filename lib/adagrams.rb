@@ -1,4 +1,5 @@
   require 'csv'
+
   def draw_letters
     alphabet = {
       A: 9,
@@ -44,12 +45,13 @@
   end
 
   def uses_available_letters?(input, letter_in_hand)
+    new_letters = letter_in_hand.map { |i| i }
     input.split("").each do |letter|
-      if !letter_in_hand.include? letter
+      if !new_letters.include? letter
         return false
-      elsif letter_in_hand.include? letter
-        index = letter_in_hand.find_index(letter)
-        letter_in_hand.delete_at(index)
+      elsif new_letters.include? letter
+        index = new_letters.find_index(letter)
+        new_letters.delete_at(index)
       end
     end
       return true
@@ -102,10 +104,9 @@
 
 
   def is_in_english_dict?(input)
-    csv_file = '../assets/dictionary-english.csv'
-    CSV.read( csv_file, "r").each do |line|
-      return true if line.include? input
+    csv_file = 'assets/dictionary-english.csv'
+    CSV.read(csv_file, "r").each do |line|
+      return true if line.include? input.downcase
     end
-    return false
+      return false
   end
- puts is_in_english_dict? "edblgkxm"
