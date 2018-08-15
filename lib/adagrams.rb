@@ -83,18 +83,26 @@
   end
 
   def highest_score_from(words)
-    best_word = {word: nil,score: 0}
+    best_word = {word: nil, score: 0}
     words.each do |word|
       if score_word(word) > best_word[:score]
         best_word[:score] = score_word(word)
         best_word[:word] = word
       elsif score_word(word) == best_word[:score]
-        if word.length < best_word[:word].length
-          best_word[:score] = score_word(word)
+        if word.length == 10 && best_word[:word].length != 10
           best_word[:word] = word
-
+        elsif word.length < best_word[:word].length && best_word[:word].length != 10
+          best_word[:word] = word
         end
       end
+
+      #elsif score_word(word) == best_word[:score] && word.length < best_word[:word].length
+
+        #if word.length < best_word[:word].length
+        #  best_word[:score] = score_word(word)
+        #  best_word[:word] = word
+
+        #end
     end
     best_word
   end
