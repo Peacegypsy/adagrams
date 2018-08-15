@@ -95,14 +95,6 @@
           best_word[:word] = word
         end
       end
-
-      #elsif score_word(word) == best_word[:score] && word.length < best_word[:word].length
-
-        #if word.length < best_word[:word].length
-        #  best_word[:score] = score_word(word)
-        #  best_word[:word] = word
-
-        #end
     end
     best_word
   end
